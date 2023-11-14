@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../routes/app_router.gr.dart';
 import '../widgets/currency_rate_view.dart';
 import '../widgets/currency_rates_dates.dart';
 
+@RoutePage()
 class CurrencyRatesScreen extends StatelessWidget {
   const CurrencyRatesScreen({super.key});
 
@@ -14,8 +17,8 @@ class CurrencyRatesScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings_rounded),
-            onPressed: () {},
-          )
+            onPressed: () => context.router.push(const SettingsRoute()),
+          ),
         ],
       ),
       body: Column(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'presentation/screens/currency_rates_screen.dart';
+import 'presentation/routes/app_router.dart';
 import 'presentation/themes/app_theme.dart';
 
 void main() {
@@ -12,9 +12,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final appRouter = AppRouter();
+    return MaterialApp.router(
       theme: AppTheme.light,
-      home: const CurrencyRatesScreen(),
+      routerConfig: appRouter.config(),
     );
   }
 }
