@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/currency_rates_cubit.dart';
 import '../../bloc/currency_rates_states.dart';
+import '../failure_loading_currency_rates_view.dart';
 import 'currency_rates_list_view.dart';
 
 class CurrencyRatesScreenBody extends StatelessWidget {
@@ -16,19 +17,7 @@ class CurrencyRatesScreenBody extends StatelessWidget {
             state is CurrencyRatesInitialState) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is CurrencyRatesFailureState) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Не удалось получить курсы валют'),
-                const SizedBox(height: 16),
-                IconButton(
-                  onPressed: BlocProvider.of<CurrencyRatesCubit>(context).load,
-                  icon: const Icon(Icons.refresh),
-                ),
-              ],
-            ),
-          );
+          return const FailureLoadingCurrencyRatesView();
         } else if (state is CurrencyRatesLoadedState) {
           return CurrencyRatesListView(record: state.record);
         }
