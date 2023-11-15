@@ -1,7 +1,9 @@
-import '../entities/currencies_with_dates_record.dart';
+import '../entities/currencies_and_rates_maps_record.dart';
 
 /// Репозиторий валют
 abstract class CurrenciesRepository {
   /// Возвращает запись с валютами и датами
-  Future<CurrenciesWithDatesRecord> getCurrenciesWithDatesRecord();
+  Future<CurrenciesAndRatesMapsRecord> getAll(
+    DateTime date,
+  );
 }

@@ -37,4 +37,8 @@ class Currency {
       name: json['Cur_Name'],
     );
   }
+
+  factory Currency.empty() {
+    return Currency(id: 0, abbreviation: '', scale: 0, name: '');
+  }
 }

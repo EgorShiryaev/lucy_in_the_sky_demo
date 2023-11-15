@@ -21,6 +21,7 @@ class CurrencySettingsView extends StatefulWidget {
 class _CurrencySettingsViewState extends State<CurrencySettingsView> {
   @override
   Widget build(BuildContext context) {
+    final settings = widget.currency.settings;
     return CustomSafeArea(
       needBottomSafeArea: widget.needBottomSafeArea,
       child: Row(
@@ -29,9 +30,9 @@ class _CurrencySettingsViewState extends State<CurrencySettingsView> {
             child: CurrencyInfo(currency: widget.currency),
           ),
           Switch(
-            value: widget.currency.isShowed,
+            value: widget.currency.settings.isShowed,
             onChanged: (value) {
-              widget.currency.isShowed = value;
+              settings.isShowed = value;
               setState(() {});
             },
           ),

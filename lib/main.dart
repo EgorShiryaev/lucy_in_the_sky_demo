@@ -6,8 +6,9 @@ import 'presentation/bloc/currencies_cubit.dart';
 import 'presentation/routes/app_router.dart';
 import 'presentation/themes/app_theme.dart';
 
-void main() async {
-  dependencyInjection();
+Future<void> main() async {
+  await dependencyInjection();
+
   runApp(const MainApp());
 }
 

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 import '../../core/utils/date_utils.dart';
+import '../../domain/entities/currencies_and_rates_maps_record.dart';
 import '../../domain/entities/currency.dart';
 import '../../domain/entities/currency_rate.dart';
-import '../../domain/entities/currency_record.dart';
 import 'currencies_datasource.dart';
 
 const _dayRate = 0;
@@ -15,7 +15,7 @@ class CurrenciesRemoteDatasource implements CurrenciesDatasource {
   CurrenciesRemoteDatasource({required Dio dio}) : _dio = dio;
 
   @override
-  Future<CurrencyRecord> getAll(DateTime date) async {
+  Future<CurrenciesAndRatesMapsRecord> getAll(DateTime date) async {
     try {
       final isoDate = convertDateToIsoDate(date);
       final queryParams = {

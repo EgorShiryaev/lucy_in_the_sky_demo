@@ -12,12 +12,12 @@ class CurrencySettingsLocalDatasource extends CurrencySettingsDatasource {
   }) : _box = box;
 
   @override
-  Future<List<CurrencySettings>> getAll() {
-    return Future.value(_box.values.toList());
+  Future<List<CurrencySettings>> getAll() async {
+    return _box.values.toList();
   }
 
   @override
   Future<void> save(CurrencySettings settings) {
-    return _box.put(settings.currencyId, settings);
+    return _box.put(settings.position, settings);
   }
 }

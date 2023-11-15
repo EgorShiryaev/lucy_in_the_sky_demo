@@ -1,7 +1,7 @@
-import '../../domain/entities/currency_record.dart';
+import '../../domain/entities/currencies_and_rates_maps_record.dart';
 
 /// Источник данных валют
 abstract class CurrenciesDatasource {
   /// Возвращает все валюты и их стоимости
-  Future<CurrencyRecord> getAll(DateTime date);
+  Future<CurrenciesAndRatesMapsRecord> getAll(DateTime date);
 }

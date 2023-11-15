@@ -4,6 +4,7 @@ import '../entities/currency_settings.dart';
 abstract class CurrencySettingsRepository {
   /// Возвращает настройки валют
   Future<List<CurrencySettings>> getAll();
+
   /// Сохраняет настройки
   Future<void> save(CurrencySettings settings);
 }

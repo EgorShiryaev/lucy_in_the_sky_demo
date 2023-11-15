@@ -1,5 +1,7 @@
 import 'package:hive/hive.dart';
 
+import 'json.dart';
+
 /// Настройки валюты
 @HiveType(typeId: 0)
 class CurrencySettings extends HiveObject {
@@ -9,7 +11,7 @@ class CurrencySettings extends HiveObject {
 
   /// Отображается ли валюта
   @HiveField(1)
-  final String isShowed;
+  bool isShowed;
 
   /// Позиция в списке
   @HiveField(2)
@@ -17,7 +19,11 @@ class CurrencySettings extends HiveObject {
 
   CurrencySettings({
     required this.currencyId,
-    required this.isShowed,
     required this.position,
+    this.isShowed = true,
   });
+
+  factory CurrencySettings.fromJsonAndPosition(Json json, int position) {
+    return CurrencySettings(currencyId: json['Cur_ID'], position: position);
+  }
 }
