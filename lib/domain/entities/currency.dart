@@ -1,4 +1,5 @@
 import 'currency_rate.dart';
+import 'currency_settings.dart';
 
 /// Валюта
 class Currency {
@@ -18,8 +19,8 @@ class Currency {
   /// Курс валюты за определенные дни
   late final Map<String, CurrencyRate> rates;
 
-  /// Отображается ли валюта
-  late bool isShowed;
+  /// Настройки валюты
+  late final CurrencySettings settings;
 
   Currency({
     required this.id,
