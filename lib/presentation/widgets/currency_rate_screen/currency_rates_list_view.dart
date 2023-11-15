@@ -19,21 +19,19 @@ class CurrencyRatesListView extends StatelessWidget {
         Expanded(
           child: RefreshIndicator(
             onRefresh: BlocProvider.of<CurrencyRatesCubit>(context).refresh,
-            child: Scrollbar(
-              child: ListView.separated(
-                itemCount: record.currencies.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 10),
-                itemBuilder: (context, index) {
-                  final currency = record.currencies[index];
-                  final isLast = index == record.currencies.length - 1;
-                  return CurrencyRateView(
-                    key: ValueKey(currency.id),
-                    currency: currency,
-                    dates: dates,
-                    needBottomSafeArea: isLast,
-                  );
-                },
-              ),
+            child: ListView.separated(
+              itemCount: record.currencies.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 10),
+              itemBuilder: (context, index) {
+                final currency = record.currencies[index];
+                final isLast = index == record.currencies.length - 1;
+                return CurrencyRateView(
+                  key: ValueKey(currency.id),
+                  currency: currency,
+                  dates: dates,
+                  needBottomSafeArea: isLast,
+                );
+              },
             ),
           ),
         ),
