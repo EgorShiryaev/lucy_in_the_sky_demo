@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/entities/currency.dart';
 import '../../../domain/entities/currency_rate.dart';
+import '../currency_info.dart';
 import '../grid_row.dart';
 
 class CurrencyRateView extends StatelessWidget {
@@ -17,22 +18,11 @@ class CurrencyRateView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return GridRow(
       needBottomSafeArea: needBottomSafeArea,
+      firstItem: CurrencyInfo(currency: currency),
       secondItem: _PriceText(currencyRate: currency.rates[dates.first]),
       thirdItem: _PriceText(currencyRate: currency.rates[dates.last]),
-      firstItem: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(currency.abbreviation, style: textTheme.titleMedium),
-          Text(
-            '${currency.scale} ${currency.name}',
-            style: textTheme.labelMedium,
-          ),
-        ],
-      ),
     );
   }
 }
