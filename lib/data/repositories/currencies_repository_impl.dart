@@ -3,13 +3,14 @@ import '../../domain/entities/currencies_with_dates_record.dart';
 import '../../domain/entities/currency.dart';
 import '../../domain/entities/currency_rate.dart';
 import '../../domain/entities/currency_record.dart';
-import '../../domain/repositories/currency_rates_repository.dart';
+import '../../domain/repositories/currencies_repository.dart';
 import '../datasources/currencies_datasource.dart';
 
-class CurrencyRatesRepositoryImpl implements CurrencyRatesRepository {
+/// Репозиторий валют
+class CurrenciesRepositoryImpl implements CurrenciesRepository {
   final CurrenciesDatasource _remoteDatasource;
 
-  CurrencyRatesRepositoryImpl({
+  CurrenciesRepositoryImpl({
     required CurrenciesDatasource remoteDatasource,
   }) : _remoteDatasource = remoteDatasource;
 

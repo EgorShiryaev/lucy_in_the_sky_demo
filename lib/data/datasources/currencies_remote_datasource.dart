@@ -8,6 +8,7 @@ import 'currencies_datasource.dart';
 
 const _dayRate = 0;
 
+/// Удаленный источник данных валют
 class CurrenciesRemoteDatasource implements CurrenciesDatasource {
   final Dio _dio;
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/currency_rates_cubit.dart';
-import '../../bloc/currency_rates_states.dart';
+import '../../bloc/currencies_cubit.dart';
+import '../../bloc/currencies_states.dart';
 import '../custom_app_bar_bottom.dart';
 import '../failure_loading_currency_rates_view.dart';
 import '../loading_view.dart';
@@ -13,21 +13,21 @@ class CurrencyRatesScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CurrencyRatesCubit, CurrencyRatesState>(
+    return BlocBuilder<CurrenciesCubit, CurrenciesState>(
       builder: (context, state) {
-        if (state is CurrencyRatesLoadingState ||
-            state is CurrencyRatesInitialState) {
+        if (state is CurrenciesLoadingState ||
+            state is CurrenciesInitialState) {
           return const Column(
             children: [
               CustomAppBarBottom(),
               LoadingView(),
             ],
           );
-        } else if (state is CurrencyRatesFailureState) {
+        } else if (state is CurrenciesFailureState) {
           return FailureView(
-            onPressReload: BlocProvider.of<CurrencyRatesCubit>(context).load,
+            onPressReload: BlocProvider.of<CurrenciesCubit>(context).load,
           );
-        } else if (state is CurrencyRatesLoadedState) {
+        } else if (state is CurrenciesLoadedState) {
           return CurrencyRatesListView(record: state.record);
         }
         return ErrorWidget('Unknowed state of CurrencyRatesCubit');

@@ -5,23 +5,24 @@ import 'package:get_it/get_it.dart';
 
 import '../../data/datasources/currencies_datasource.dart';
 import '../../data/datasources/currencies_remote_datasource.dart';
-import '../../data/repositories/currency_rates_repository_impl.dart';
-import '../../domain/repositories/currency_rates_repository.dart';
-import '../../domain/usecases/get_currency_rates_with_dates_record.dart';
-import '../../presentation/bloc/currency_rates_cubit.dart';
+import '../../data/repositories/currencies_repository_impl.dart';
+import '../../domain/repositories/currencies_repository.dart';
+import '../../domain/usecases/get_currencies_with_dates.dart';
+import '../../presentation/bloc/currencies_cubit.dart';
 
 final getIt = GetIt.instance;
 
+/// Внедрение зависимостей
 void dependencyInjection() {
   getIt
-    ..registerFactory<CurrencyRatesCubit>(
-      () => CurrencyRatesCubit(usecase: getIt()),
+    ..registerFactory<CurrenciesCubit>(
+      () => CurrenciesCubit(usecase: getIt()),
     )
-    ..registerLazySingleton<GetCurrencyRatesWithDatesRecord>(
-      () => GetCurrencyRatesWithDatesRecord(repository: getIt()),
+    ..registerLazySingleton<GetCurrenciesWithDates>(
+      () => GetCurrenciesWithDates(repository: getIt()),
     )
-    ..registerLazySingleton<CurrencyRatesRepository>(
-      () => CurrencyRatesRepositoryImpl(
+    ..registerLazySingleton<CurrenciesRepository>(
+      () => CurrenciesRepositoryImpl(
         remoteDatasource: getIt(),
       ),
     )

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/entities/currency.dart';
-import '../bloc/currency_rates_cubit.dart';
+import '../bloc/currencies_cubit.dart';
 import '../widgets/custom_app_bar_bottom.dart';
 import '../widgets/settings_screen/currency_settings_list_view.dart';
 
@@ -18,7 +18,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        unawaited(BlocProvider.of<CurrencyRatesCubit>(context).load());
+        unawaited(BlocProvider.of<CurrenciesCubit>(context).load());
         return true;
       },
       child: Scaffold(

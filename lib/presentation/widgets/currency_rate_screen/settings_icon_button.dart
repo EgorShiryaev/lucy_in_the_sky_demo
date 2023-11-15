@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/currency_rates_cubit.dart';
-import '../../bloc/currency_rates_states.dart';
+import '../../bloc/currencies_cubit.dart';
+import '../../bloc/currencies_states.dart';
 import '../../routes/app_router.gr.dart';
 
 class SettingsIconButton extends StatelessWidget {
@@ -11,9 +11,9 @@ class SettingsIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CurrencyRatesCubit, CurrencyRatesState>(
+    return BlocBuilder<CurrenciesCubit, CurrenciesState>(
       builder: (context, state) {
-        if (state is CurrencyRatesLoadedState) {
+        if (state is CurrenciesLoadedState) {
           final currencies = state.record.currencies;
           return IconButton(
             icon: const Icon(Icons.settings_rounded),
