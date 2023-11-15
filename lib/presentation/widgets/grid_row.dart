@@ -4,20 +4,20 @@ class GridRow extends StatelessWidget {
   final Widget? firstItem;
   final Widget secondItem;
   final Widget thirdItem;
-  final bool bottomSafeArea;
+  final bool needBottomSafeArea;
   const GridRow({
     super.key,
     this.firstItem,
     required this.secondItem,
     required this.thirdItem,
-    this.bottomSafeArea = true,
+    this.needBottomSafeArea = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      minimum: const EdgeInsets.symmetric(horizontal: 8),
-      bottom: bottomSafeArea,
+      bottom: needBottomSafeArea,
+      minimum: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
           Expanded(
