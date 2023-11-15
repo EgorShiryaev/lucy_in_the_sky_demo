@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'custom_safe_area.dart';
+
 class GridRow extends StatelessWidget {
   final Widget? firstItem;
   final Widget secondItem;
@@ -15,9 +17,8 @@ class GridRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      bottom: needBottomSafeArea,
-      minimum: const EdgeInsets.symmetric(horizontal: 16),
+    return CustomSafeArea(
+      needBottomSafeArea: needBottomSafeArea,
       child: Row(
         children: [
           Expanded(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/currency_rates_cubit.dart';
-import '../bloc/currency_rates_states.dart';
+import '../../bloc/currency_rates_cubit.dart';
+import '../../bloc/currency_rates_states.dart';
+import '../custom_app_bar_bottom.dart';
+import '../failure_loading_currency_rates_view.dart';
+import '../loading_view.dart';
 import 'currency_rates_list_view.dart';
 
 class CurrencyRatesScreenBody extends StatelessWidget {
@@ -14,20 +17,15 @@ class CurrencyRatesScreenBody extends StatelessWidget {
       builder: (context, state) {
         if (state is CurrencyRatesLoadingState ||
             state is CurrencyRatesInitialState) {
-          return const Center(child: CircularProgressIndicator());
+          return const Column(
+            children: [
+              CustomAppBarBottom(),
+              LoadingView(),
+            ],
+          );
         } else if (state is CurrencyRatesFailureState) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Не удалось получить курсы валют'),
-                const SizedBox(height: 16),
-                IconButton(
-                  onPressed: BlocProvider.of<CurrencyRatesCubit>(context).load,
-                  icon: const Icon(Icons.refresh),
-                ),
-              ],
-            ),
+          return FailureView(
+            onPressReload: BlocProvider.of<CurrencyRatesCubit>(context).load,
           );
         } else if (state is CurrencyRatesLoadedState) {
           return CurrencyRatesListView(record: state.record);

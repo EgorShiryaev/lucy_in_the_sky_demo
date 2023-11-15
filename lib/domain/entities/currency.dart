@@ -18,6 +18,9 @@ class Currency {
   /// Курс валюты за определенные дни
   late final Map<String, CurrencyRate> rates;
 
+  /// Отображается ли валюта
+  late bool isShowed;
+
   Currency({
     required this.id,
     required this.abbreviation,
