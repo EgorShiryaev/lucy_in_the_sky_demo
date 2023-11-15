@@ -70,6 +70,7 @@ class CurrencyRatesRepositoryImpl implements CurrencyRatesRepository {
       if (currency != null) {
         list.add(currency);
       }
+      currency?.isShowed = true;
     }
     return (currencies: list, dates: dates);
   }

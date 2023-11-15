@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/currency_rates_cubit.dart';
 
-class FailureLoadingCurrencyRatesView extends StatelessWidget {
-  const FailureLoadingCurrencyRatesView({super.key});
+class FailureView extends StatelessWidget {
+  final VoidCallback onPressReload;
+  const FailureView({super.key, required this.onPressReload});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class FailureLoadingCurrencyRatesView extends StatelessWidget {
           const Text('Не удалось получить курсы валют'),
           const SizedBox(height: 16),
           IconButton(
-            onPressed: BlocProvider.of<CurrencyRatesCubit>(context).load,
+            onPressed: onPressReload,
             icon: const Icon(Icons.refresh),
           ),
         ],

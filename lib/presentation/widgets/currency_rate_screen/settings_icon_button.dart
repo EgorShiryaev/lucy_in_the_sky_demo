@@ -14,9 +14,12 @@ class SettingsIconButton extends StatelessWidget {
     return BlocBuilder<CurrencyRatesCubit, CurrencyRatesState>(
       builder: (context, state) {
         if (state is CurrencyRatesLoadedState) {
+          final currencies = state.record.currencies;
           return IconButton(
             icon: const Icon(Icons.settings_rounded),
-            onPressed: () => context.router.push(const SettingsRoute()),
+            onPressed: () => context.router.push(
+              SettingsRoute(currencies: currencies),
+            ),
           );
         }
         return const SizedBox();

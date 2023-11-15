@@ -17,7 +17,9 @@ class CurrencyRatesScreenBody extends StatelessWidget {
             state is CurrencyRatesInitialState) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is CurrencyRatesFailureState) {
-          return const FailureLoadingCurrencyRatesView();
+          return FailureView(
+            onPressReload: BlocProvider.of<CurrencyRatesCubit>(context).load,
+          );
         } else if (state is CurrencyRatesLoadedState) {
           return CurrencyRatesListView(record: state.record);
         }
