@@ -12,8 +12,8 @@ class CurrencySettingsLocalDatasource extends CurrencySettingsDatasource {
   }) : _box = box;
 
   @override
-  List<CurrencySettings> getAll() {
-    return _box.values.toList();
+  Future<List<CurrencySettings>> getAll() {
+    return Future.value(_box.values.toList());
   }
 
   @override

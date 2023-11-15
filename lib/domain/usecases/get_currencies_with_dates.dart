@@ -9,7 +9,7 @@ class GetCurrenciesWithDates {
     required CurrenciesRepository repository,
   }) : _repository = repository;
 
-  /// Выдает запись с валютами и датами
+  /// Возвращает запись с валютами и датами
   Future<CurrenciesWithDatesRecord> call() {
     return _repository.getCurrenciesWithDatesRecord();
   }
