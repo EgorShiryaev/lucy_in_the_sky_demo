@@ -1,46 +1,50 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/entities/currency.dart';
+import '../../domain/entities/currency_rate.dart';
 import 'grid_row.dart';
 
 class CurrencyRateView extends StatelessWidget {
-  final String abbreviation;
-  final int scale;
-  final String name;
-  final double firstPrice;
-  final double secondPrice;
+  final Currency currency;
+  final List<String> dates;
+  final bool needBottomSafeArea;
   const CurrencyRateView({
     super.key,
-    required this.abbreviation,
-    required this.scale,
-    required this.name,
-    required this.firstPrice,
-    required this.secondPrice,
+    required this.currency,
+    required this.dates,
+    this.needBottomSafeArea = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+
     return GridRow(
+      needBottomSafeArea: needBottomSafeArea,
+      secondItem: _PriceText(currencyRate: currency.rates[dates.first]),
+      thirdItem: _PriceText(currencyRate: currency.rates[dates.last]),
       firstItem: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(abbreviation, style: textTheme.titleMedium),
-          Text('$scale $name', style: textTheme.labelMedium),
+          Text(currency.abbreviation, style: textTheme.titleMedium),
+          Text(
+            '${currency.scale} ${currency.name}',
+            style: textTheme.labelMedium,
+          ),
         ],
       ),
-      secondItem: _PriceText(price: firstPrice),
-      thirdItem: _PriceText(price: secondPrice),
     );
   }
 }
 
 class _PriceText extends StatelessWidget {
-  final double price;
-  const _PriceText({required this.price});
+  final CurrencyRate? currencyRate;
+  const _PriceText({required this.currencyRate});
 
   @override
   Widget build(BuildContext context) {
+    final text = currencyRate?.rate.toString() ?? '';
     final textTheme = Theme.of(context).textTheme;
-    return Text('$price', style: textTheme.bodyMedium);
+    return Text(text, style: textTheme.bodyMedium);
   }
 }

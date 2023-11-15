@@ -5,6 +5,8 @@ class AppTheme {
     const colorScheme = ColorScheme.light(
       primary: Colors.grey,
       secondary: Colors.black,
+      error: Colors.red,
+      onError: Colors.white,
     );
 
     final textTheme = TextTheme(
