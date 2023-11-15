@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/currencies_with_dates_record.dart';
-import '../bloc/currency_rates_cubit.dart';
+import '../../../domain/entities/currencies_with_dates_record.dart';
+import '../../bloc/currency_rates_cubit.dart';
 import 'currency_rate_view.dart';
 import 'currency_rates_dates.dart';
 

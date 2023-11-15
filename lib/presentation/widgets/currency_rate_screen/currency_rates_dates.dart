@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'custom_app_bar_bottom.dart';
-import 'grid_row.dart';
+import '../custom_app_bar_bottom.dart';
+import '../grid_row.dart';
 
 class CurrencyRatesDate extends CustomAppBarBottom {
   final List<String> dates;

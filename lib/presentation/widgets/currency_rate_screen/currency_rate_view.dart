@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/currency.dart';
-import '../../domain/entities/currency_rate.dart';
-import 'grid_row.dart';
+import '../../../domain/entities/currency.dart';
+import '../../../domain/entities/currency_rate.dart';
+import '../grid_row.dart';
 
 class CurrencyRateView extends StatelessWidget {
   final Currency currency;

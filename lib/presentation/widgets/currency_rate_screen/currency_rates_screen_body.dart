@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/currency_rates_cubit.dart';
-import '../bloc/currency_rates_states.dart';
+import '../../bloc/currency_rates_cubit.dart';
+import '../../bloc/currency_rates_states.dart';
 import 'currency_rates_list_view.dart';
 
 class CurrencyRatesScreenBody extends StatelessWidget {
