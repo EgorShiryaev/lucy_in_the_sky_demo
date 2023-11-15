@@ -1,16 +1,22 @@
+import 'package:hive/hive.dart';
+
 /// Настройки валюты
-class CurrencySettings {
+@HiveType(typeId: 0)
+class CurrencySettings extends HiveObject {
   /// Id валюты
-  final int id;
+  @HiveField(0)
+  final int currencyId;
 
   /// Отображается ли валюта
+  @HiveField(1)
   final String isShowed;
 
   /// Позиция в списке
+  @HiveField(2)
   final int position;
 
   CurrencySettings({
-    required this.id,
+    required this.currencyId,
     required this.isShowed,
     required this.position,
   });
