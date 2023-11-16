@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'core/di/dependency_injection.dart';
 import 'presentation/bloc/currencies_cubit/currencies_cubit.dart';
@@ -8,8 +11,10 @@ import 'presentation/routes/app_router.dart';
 import 'presentation/themes/app_theme.dart';
 
 Future<void> main() async {
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await dependencyInjection();
-
+  Timer(const Duration(milliseconds: 750), FlutterNativeSplash.remove);
   runApp(const MainApp());
 }
 
