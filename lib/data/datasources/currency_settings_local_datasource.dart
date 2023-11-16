@@ -17,7 +17,8 @@ class CurrencySettingsLocalDatasource extends CurrencySettingsDatasource {
   }
 
   @override
-  Future<void> save(CurrencySettings settings) {
-    return _box.put(settings.position, settings);
+  Future<void> save(List<CurrencySettings> settings) {
+    final map = settings.asMap();
+    return _box.putAll(map);
   }
 }

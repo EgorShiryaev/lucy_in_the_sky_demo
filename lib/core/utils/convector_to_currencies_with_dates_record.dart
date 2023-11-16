@@ -25,10 +25,6 @@ class ConvectorToCurrenciesWithDatesRecord {
     final uniqKeys = _records.expand((e) => e.currenciesMap.keys).toSet();
 
     for (final settings in _currencySettings) {
-      if (!settings.isShowed) {
-        uniqKeys.remove(settings.currencyId);
-        continue;
-      }
       final currency = _getCurrency(settings.currencyId);
       if (currency != null) {
         currency.settings = settings;
@@ -43,7 +39,7 @@ class ConvectorToCurrenciesWithDatesRecord {
         currencies.add(currency);
         currency.settings = CurrencySettings(
           currencyId: currency.id,
-          position: currencies.length,
+          isShowed: false,
         );
       }
     }

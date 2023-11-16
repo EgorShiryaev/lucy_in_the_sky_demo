@@ -14,7 +14,9 @@ import '../../domain/entities/currency_settings.dart';
 import '../../domain/repositories/currencies_repository.dart';
 import '../../domain/repositories/currency_settings_repository.dart';
 import '../../domain/usecases/get_currencies_with_dates.dart';
-import '../../presentation/bloc/currencies_cubit.dart';
+import '../../domain/usecases/save_currency_settings.dart';
+import '../../presentation/bloc/currencies_cubit/currencies_cubit.dart';
+import '../../presentation/bloc/currency_settings_cubit/currency_settings_cubit.dart';
 import '../constant/app_settings.dart';
 
 final getIt = GetIt.instance;
@@ -22,17 +24,24 @@ final getIt = GetIt.instance;
 /// Внедрение зависимостей
 Future<void> dependencyInjection() async {
   await Hive.initFlutter();
+  Hive.registerAdapter(CurrencySettingsAdapter());
   final box =
       await Hive.openBox<CurrencySettings>(AppSettings.currencySettingsBoxName);
   getIt
     ..registerFactory<CurrenciesCubit>(
       () => CurrenciesCubit(usecase: getIt()),
     )
+    ..registerLazySingleton<CurrencySettingsCubit>(
+      () => CurrencySettingsCubit(usecase: getIt()),
+    )
     ..registerLazySingleton<GetCurrenciesWithDates>(
       () => GetCurrenciesWithDates(
         currenciesRepository: getIt(),
         currencySettingsRepository: getIt(),
       ),
+    )
+    ..registerLazySingleton<SaveCurrencySettings>(
+      () => SaveCurrencySettings(repository: getIt()),
     )
     ..registerLazySingleton<CurrenciesRepository>(
       () => CurrenciesRepositoryImpl(remoteDatasource: getIt()),

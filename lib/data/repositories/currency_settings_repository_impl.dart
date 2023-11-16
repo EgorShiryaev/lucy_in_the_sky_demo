@@ -15,7 +15,7 @@ class CurrencySettingsRepositoryImpl implements CurrencySettingsRepository {
   }
 
   @override
-  Future<void> save(CurrencySettings settings) {
+  Future<void> save(List<CurrencySettings> settings) {
     return _localDatasource.save(settings);
   }
 }

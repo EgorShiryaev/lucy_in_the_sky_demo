@@ -6,5 +6,5 @@ abstract class CurrencySettingsRepository {
   Future<List<CurrencySettings>> getAll();
 
   /// Сохраняет настройки
-  Future<void> save(CurrencySettings settings);
+  Future<void> save(List<CurrencySettings> settings);
 }

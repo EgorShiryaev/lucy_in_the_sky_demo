@@ -1,4 +1,4 @@
-import '../../core/utils/convector.dart';
+import '../../core/utils/convector_to_currencies_with_dates_record.dart';
 import '../entities/currencies_and_rates_maps_record.dart';
 import '../entities/currencies_with_dates_record.dart';
 import '../entities/currency_settings.dart';

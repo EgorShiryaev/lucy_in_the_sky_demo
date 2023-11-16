@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/currencies_cubit.dart';
-import '../../bloc/currencies_states.dart';
-import '../custom_app_bar_bottom.dart';
+import '../../bloc/currencies_cubit/currencies_cubit.dart';
+import '../../bloc/currencies_cubit/currencies_states.dart';
 import '../failure_loading_currency_rates_view.dart';
 import '../loading_view.dart';
 import 'currency_rates_list_view.dart';
@@ -17,12 +16,7 @@ class CurrencyRatesScreenBody extends StatelessWidget {
       builder: (context, state) {
         if (state is CurrenciesLoadingState ||
             state is CurrenciesInitialState) {
-          return const Column(
-            children: [
-              CustomAppBarBottom(),
-              LoadingView(),
-            ],
-          );
+          return const LoadingView();
         } else if (state is CurrenciesFailureState) {
           return FailureView(
             onPressReload: BlocProvider.of<CurrenciesCubit>(context).load,
