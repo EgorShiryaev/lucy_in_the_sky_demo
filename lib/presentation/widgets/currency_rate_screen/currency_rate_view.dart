@@ -18,11 +18,22 @@ class CurrencyRateView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridRow(
-      needBottomSafeArea: needBottomSafeArea,
-      firstItem: CurrencyInfo(currency: currency),
-      secondItem: _PriceText(currencyRate: currency.rates[dates.first]),
-      thirdItem: _PriceText(currencyRate: currency.rates[dates.last]),
+    if (!currency.settings.isShowed) {
+      return SafeArea(
+        bottom: needBottomSafeArea,
+        child: const SizedBox(),
+      );
+    }
+    return Padding(
+      padding: needBottomSafeArea
+          ? EdgeInsets.zero
+          : const EdgeInsets.only(bottom: 10),
+      child: GridRow(
+        needBottomSafeArea: needBottomSafeArea,
+        firstItem: CurrencyInfo(currency: currency),
+        secondItem: _PriceText(currencyRate: currency.rates[dates.first]),
+        thirdItem: _PriceText(currencyRate: currency.rates[dates.last]),
+      ),
     );
   }
 }

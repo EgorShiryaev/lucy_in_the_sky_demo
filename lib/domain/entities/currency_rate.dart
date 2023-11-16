@@ -1,4 +1,5 @@
 import '../../core/utils/date_utils.dart';
+import 'json.dart';
 
 /// Курс валюты
 class CurrencyRate {
@@ -13,7 +14,7 @@ class CurrencyRate {
     required this.rate,
   });
 
-  factory CurrencyRate.fromJson(Map<String, dynamic> json) {
+  factory CurrencyRate.fromJson(Json json) {
     return CurrencyRate(
       date: convertIsoDateStringToDateTime(json['Date']),
       rate: json['Cur_OfficialRate'],
